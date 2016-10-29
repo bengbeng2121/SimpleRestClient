@@ -4,7 +4,6 @@ import com.codepath.apps.restclienttemplate.MyDatabase;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.sql.language.Select;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 import org.json.JSONException;
@@ -56,10 +55,12 @@ public class SampleModel extends BaseModel {
 
     // Record Finders
     public static SampleModel byId(long id) {
-        return new Select().from(SampleModel.class).where(SampleModel_Table.id.eq(id)).querySingle();
+        //return new Select().from(SampleModel.class).where(SampleModel_Table.id.eq(id)).querySingle();
+        return null;
     }
 
     public static List<SampleModel> recentItems() {
-        return new Select().from(SampleModel.class).orderBy(SampleModel_Table.id, false).limit(300).queryList();
+        //return new Select().from(SampleModel.class).orderBy(SampleModel_Table.id, false).limit(300).queryList();
+        return null;
     }
 }

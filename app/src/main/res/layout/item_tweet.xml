@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="6dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="6dp">
 
     <ImageView
-        android:id="@+id/ivAvatar"
+        android:id="@+id/ivProfileImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginLeft="6dp"
         tools:src="@drawable/avatar" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_toRightOf="@id/ivProfileImage"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -61,28 +63,36 @@
             android:paddingTop="5dp">
 
             <TextView
+                android:id="@+id/tvReply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_reply" />
 
             <TextView
+                android:id="@+id/tvRetweet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_retweet"
+                android:drawablePadding="4dp"
                 android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
                 tools:text="100K" />
 
             <TextView
+                android:id="@+id/tvFavorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:drawableLeft="@drawable/ic_heart"
+                android:drawablePadding="4dp"
                 android:gravity="center_vertical"
+                android:textColor="@android:color/darker_gray"
                 tools:text="100K" />
 
             <TextView
+                android:id="@+id/tvMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -91,4 +101,9 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="#E6E6E6" />
+</RelativeLayout>

@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import android.app.Application;
 import android.content.Context;
 
+import com.google.gson.Gson;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowLog;
 import com.raizlabs.android.dbflow.config.FlowManager;
@@ -18,6 +19,7 @@ import com.raizlabs.android.dbflow.config.FlowManager;
  */
 public class RestApplication extends Application {
     private static Context context;
+    public static Gson GSON = new Gson();
 
     @Override
     public void onCreate() {
