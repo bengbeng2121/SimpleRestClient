@@ -11,7 +11,7 @@ public abstract class EndlessScrollingListener extends RecyclerView.OnScrollList
 
     private int mVisibleThreshold = 5;
     private int mCurrentPage = 1;
-    private int mPreviousTotalItemCount;
+    private int mPreviousTotalItemCount = 0;
     private boolean mLoading = true;
     private int mStaringPageIndex = 1;
 
