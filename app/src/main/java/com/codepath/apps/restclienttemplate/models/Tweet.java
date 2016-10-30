@@ -26,6 +26,9 @@ public class Tweet {
     @SerializedName("user")
     private User user;
 
+    @SerializedName("entities")
+    private Entities entities;
+
     public long getId() {
         return id;
     }
@@ -48,5 +51,9 @@ public class Tweet {
 
     public User getUser() {
         return user;
+    }
+
+    public Entities getEntities() {
+        return entities;
     }
 }

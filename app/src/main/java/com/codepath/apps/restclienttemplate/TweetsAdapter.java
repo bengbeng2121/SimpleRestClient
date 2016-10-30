@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,6 +92,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @BindView(R.id.tvTime)
         TextView tvTime;
 
+        @BindView(R.id.cvContainer)
+        CardView cvContainer;
+
+        @BindView(R.id.ivMedia)
+        ImageView ivMedia;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -116,6 +123,16 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                             ivProfileImage.setImageDrawable(bitmap);
                         }
                     });
+
+            String mediaUrl = tweet.getEntities().getMediaUrl();
+            if (!mediaUrl.isEmpty()) {
+                cvContainer.setVisibility(View.VISIBLE);
+                Glide.with(context)
+                        .load(mediaUrl)
+                        .into(ivMedia);
+            } else {
+                cvContainer.setVisibility(View.GONE);
+            }
         }
     }
 }
