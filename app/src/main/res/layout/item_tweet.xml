@@ -28,13 +28,14 @@
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="16sp"
                 android:layout_alignParentLeft="true"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 tools:text="Blue Gao" />
 
             <TextView
-                android:id="@+id/tvNameTag"
+                android:id="@+id/tvScreenName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

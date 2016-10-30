@@ -76,8 +76,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @BindView(R.id.tvUserName)
         TextView tvUserName;
 
-        @BindView(R.id.tvNameTag)
-        TextView tvNameTag;
+        @BindView(R.id.tvScreenName)
+        TextView tvScreenName;
 
         @BindView(R.id.tvContent)
         TextView tvContent;
@@ -88,6 +88,9 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         @BindView(R.id.tvFavorite)
         TextView tvFavorite;
 
+        @BindView(R.id.tvTime)
+        TextView tvTime;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -95,9 +98,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         public void bindData(Tweet tweet) {
             tvUserName.setText(tweet.getUser().getName());
+            tvScreenName.setText(tweet.getUser().getScreenName());
             tvContent.setText(tweet.getText());
             tvRetweet.setText(String.valueOf(tweet.getRetweet()));
             tvFavorite.setText(String.valueOf(tweet.getFavorite()));
+            tvTime.setText(DisplayUtil.getDateDifferenceForDisplay(tweet.getCreateTime()));
+
             final Context context = ivProfileImage.getContext();
             Glide.with(context)
                     .load(tweet.getUser().getBiggerImageUrl())

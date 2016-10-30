@@ -20,6 +20,9 @@ public class Tweet {
     @SerializedName("favorite_count")
     private int favorite;
 
+    @SerializedName("created_at")
+    private String createTime;
+
     @SerializedName("user")
     private User user;
 
@@ -37,6 +40,10 @@ public class Tweet {
 
     public int getFavorite() {
         return favorite;
+    }
+
+    public String getCreateTime() {
+        return createTime;
     }
 
     public User getUser() {

@@ -14,6 +14,9 @@ public class User {
     @SerializedName("name")
     private String name;
 
+    @SerializedName("screen_name")
+    private String screenName;
+
     @SerializedName("profile_image_url")
     private String imageUrl;
 
@@ -23,6 +26,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getScreenName() {
+        return "@" + screenName;
     }
 
     public String getImageUrl() {
