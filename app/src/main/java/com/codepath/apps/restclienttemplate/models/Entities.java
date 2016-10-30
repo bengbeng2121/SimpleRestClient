@@ -18,9 +18,12 @@ public class Entities {
     @SerializedName("media")
     private JsonArray media;
 
-    public String getMediaUrl() {
+    public String getPhotoMediaUrl() {
         if (media != null && media.size() > 0) {
-            return  ((JsonObject)media.get(0)).get("media_url").getAsString();
+            JsonObject mediaObj = (JsonObject) media.get(0);
+            if (mediaObj.get("type").getAsString().equals("photo")) {
+                return mediaObj.get("media_url").getAsString();
+            }
         }
         return "";
     }

@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,7 +14,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+import com.codepath.apps.restclienttemplate.R;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.util.DisplayUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +46,12 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         mTweets.clear();
         mTweets.addAll(tweets);
         notifyDataSetChanged();
+    }
+
+    public void addTweets(List<Tweet> tweets) {
+        int positionStart = getItemCount();
+        mTweets.addAll(tweets);
+        notifyItemRangeInserted(positionStart, mTweets.size());
     }
 
     @Override
@@ -124,7 +132,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         }
                     });
 
-            String mediaUrl = tweet.getEntities().getMediaUrl();
+            String mediaUrl = tweet.getEntities().getPhotoMediaUrl();
             if (!mediaUrl.isEmpty()) {
                 cvContainer.setVisibility(View.VISIBLE);
                 Glide.with(context)

@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import android.app.Application;
 import android.content.Context;
 
+import com.codepath.apps.restclienttemplate.api.RestClient;
 import com.google.gson.Gson;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowLog;

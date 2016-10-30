@@ -55,6 +55,8 @@
             android:id="@+id/tvContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:linksClickable="true"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sodales ex eu placerat ornare. Sed lacus lectus, eleifend eget rutrum sed, interdum vehicula ligula. Sed egestas risus vitae nibh ullamcorper, ac ullamcorper leo pretium. Integer sed urna non tellus molestie euismod nec id mauris." />
 
         <android.support.v7.widget.CardView
