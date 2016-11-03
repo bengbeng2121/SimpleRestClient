@@ -1,12 +1,12 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
     Toolbar tbHomeBar;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
@@ -102,6 +102,24 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.home, menu);
-        return true;
+        setUpSearchView(menu.findItem(R.id.action_search));
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void setUpSearchView(MenuItem item) {
+        // TODO đổi màu nút back / close sang màu trắng
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_compose:
+                ComposeFragment fragment = ComposeFragment.newInstance();
+                // FIXME thêm style, gõ text không thấy
+                // fragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.Dialog_FullScreen);
+                fragment.show(getSupportFragmentManager(), "compose_fragment");
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
