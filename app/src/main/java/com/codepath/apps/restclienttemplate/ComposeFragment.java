@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import butterknife.BindView;
@@ -21,6 +22,9 @@ public class ComposeFragment extends DialogFragment {
 
     @BindView(R.id.ivClose)
     ImageView ivClose;
+
+    @BindView(R.id.etTweet)
+    EditText etTweet;
 
     public static ComposeFragment newInstance() {
         Bundle args = new Bundle();

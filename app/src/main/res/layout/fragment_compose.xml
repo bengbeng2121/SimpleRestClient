@@ -1,16 +1,18 @@
 <!-- fragment_edit_name.xml -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/compose_tweet"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     android:padding="5dp">
 
     <RelativeLayout
+        android:id="@+id/content1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/ivClose"
@@ -47,17 +49,18 @@
         android:id="@+id/etTweet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/content1"
+        android:background="@android:color/transparent"
         android:hint="What's happening?"
-        android:inputType="text" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray" />
+        android:inputType="textMultiLine"
+        android:padding="10dp" />
 
     <RelativeLayout
+        android:id="@+id/content2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
         android:padding="5dp">
 
         <Button
@@ -76,4 +79,10 @@
             android:paddingRight="5dp"
             tools:text="140" />
     </RelativeLayout>
-</LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/content2"
+        android:background="@android:color/darker_gray" />
+</RelativeLayout>
