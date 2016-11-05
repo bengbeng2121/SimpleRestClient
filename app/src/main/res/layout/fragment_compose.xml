@@ -53,7 +53,8 @@
         android:background="@android:color/transparent"
         android:hint="What's happening?"
         android:inputType="textMultiLine"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:textColor="@android:color/black" />
 
     <RelativeLayout
         android:id="@+id/content2"

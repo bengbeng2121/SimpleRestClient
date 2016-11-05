@@ -59,4 +59,14 @@ public class RestClient extends OAuthBaseClient {
         params.put("page", String.valueOf(page));
         getClient().get(apiUrl, params, handler);
     }
+
+    public void postStatus(String status, JsonHttpResponseHandler handler) {
+        if (status.length() > 140) {
+            status = status.substring(0, 140);
+        }
+        String apiUrl = getApiUrl("statuses/update.json");
+        RequestParams params = new RequestParams();
+        params.put("status", status);
+        getClient().post(apiUrl, params, handler);
+    }
 }

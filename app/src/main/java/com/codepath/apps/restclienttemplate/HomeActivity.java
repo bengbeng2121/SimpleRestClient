@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.codepath.apps.restclienttemplate.adapter.EndlessScrollingListener;
 import com.codepath.apps.restclienttemplate.adapter.TweetsAdapter;
 import com.codepath.apps.restclienttemplate.models.Tweet;
@@ -30,7 +31,7 @@ import cz.msebera.android.httpclient.Header;
  * Created by taq on 29/10/2016.
  */
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements ComposeFragment.ComposeFragmentListener {
 
     private TweetsAdapter mTweetsAdapter;
     private LinearLayoutManager mLayoutManager;
@@ -121,5 +122,31 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onFinish(String status) {
+        final MaterialDialog dialog = new MaterialDialog.Builder(this)
+                .content("Posting your tweet...")
+                .progress(true, 0)
+                .progressIndeterminateStyle(true)
+                .show();
+        RestApplication.getRestClient().postStatus(status, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Tweet newTweet = RestApplication.GSON.fromJson(response.toString(), Tweet.class);
+                mTweetsAdapter.addNewTweet(newTweet);
+                rvTweets.scrollToPosition(0);
+                dialog.hide();
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                dialog.hide();
+                Toast.makeText(HomeActivity.this, "Call api post tweet failure!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

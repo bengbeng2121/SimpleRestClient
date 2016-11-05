@@ -15,6 +15,10 @@ public class NoticeDialog extends DialogFragment {
 
     private static final String MESSAGE = "message";
 
+    public interface NoticeDialogListener {
+        void onClickOk();
+    }
+
     public NoticeDialog() {
     }
 
@@ -35,7 +39,8 @@ public class NoticeDialog extends DialogFragment {
         alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
+                NoticeDialogListener listener = (NoticeDialogListener) getTargetFragment();
+                listener.onClickOk();
             }
         });
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

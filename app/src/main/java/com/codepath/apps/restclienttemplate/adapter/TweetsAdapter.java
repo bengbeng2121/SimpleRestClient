@@ -54,6 +54,11 @@ public class TweetsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         notifyItemRangeInserted(positionStart, mTweets.size());
     }
 
+    public void addNewTweet(Tweet newTweet) {
+        mTweets.add(0, newTweet);
+        notifyItemInserted(0);
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
